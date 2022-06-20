@@ -15,15 +15,26 @@
 
 	/** @type {Todo[]} */
 	export let todos;
+	export let pageTitle = "Todos";
+	export let pageDesc = "Todos example for Fire for SvelteKit.";
 </script>
 
 <svelte:head>
-	<title>Todos</title>
-	<meta name="description" content="A todo list app" />
+	<title>
+		{pageTitle}
+	</title>
+	<meta name="twitter:title" content={pageTitle}>
+	<meta property="og:title" content={pageTitle}>
+	<meta name="description" content={pageDesc} />
+	<meta name="twitter:description" content={pageDesc}>
+	<meta property="og:description" content={pageDesc}>
+	<meta itemprop="description" content={pageDesc}>
 </svelte:head>
 
 <div class="todos">
-	<h1>Todos</h1>
+	<h1>
+		Todos
+	</h1>
 
 	<form
 		class="new"
@@ -78,6 +89,8 @@
 		</div>
 	{/each}
 </div>
+
+<br /> <br />
 
 <style>
 	.todos {

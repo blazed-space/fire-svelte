@@ -14,13 +14,27 @@
 	export const prerender = true;
 </script>
 
+<script>
+	export let pageTitle = "About Fire for SvelteKit";
+	export let pageDesc = "A boilerplate framework for SvelteKit.";
+</script>
+
 <svelte:head>
-	<title>About</title>
-	<meta name="description" content="About this app" />
+	<title>
+		{pageTitle}
+	</title>
+	<meta name="twitter:title" content={pageTitle}>
+	<meta property="og:title" content={pageTitle}>
+	<meta name="description" content={pageDesc} />
+	<meta name="twitter:description" content={pageDesc}>
+	<meta property="og:description" content={pageDesc}>
+	<meta itemprop="description" content={pageDesc}>
 </svelte:head>
 
 <div class="content">
-	<h1>About this app</h1>
+	<h1 class="mb-5">
+		About this app
+	</h1>
 
 	<p>
 		This is a <a href="https://kit.svelte.dev">SvelteKit</a> app. You can make your own by typing the
@@ -35,7 +49,7 @@
 		the devtools network panel and reloading.
 	</p>
 
-	<p>
+	<p class="mb-10">
 		The <a href="/todos">TODOs</a> page illustrates SvelteKit's data loading and form handling. Try using
 		it with JavaScript disabled!
 	</p>

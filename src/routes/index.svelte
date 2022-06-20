@@ -1,60 +1,34 @@
-<script context="module">
-	export const prerender = true;
-</script>
-
 <script>
-	import Counter from '$lib/Counter.svelte';
+	export let pageTitle = "Fire for SvelteKit";
+	export let pageDesc = "A boilerplate framework for SvelteKit.";
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>
+		{pageTitle}
+	</title>
+	<meta name="twitter:title" content={pageTitle}>
+	<meta property="og:title" content={pageTitle}>
+	<meta name="description" content={pageDesc} />
+	<meta name="twitter:description" content={pageDesc}>
+	<meta property="og:description" content={pageDesc}>
+	<meta itemprop="description" content={pageDesc}>
 </svelte:head>
 
-<section>
-	<h1>
-		<div class="welcome">
-			<picture>
-				<source srcset="svelte-welcome.webp" type="image/webp" />
-				<img src="svelte-welcome.png" alt="Welcome" />
-			</picture>
+<div class="content">
+	<div class="py-6 text-gray-900">
+		<div class="container mx-auto flex flex-col items-center justify-center p-4 space-y-8 md:p-10 md:px-24 xl:px-48">
+			<h1 class="text-5xl font-bold leading-none text-center">
+				Welcome to Fire for SvelteKit
+			</h1>
+			<p class="text-xl font-medium text-center">
+				Try editing <strong>src/routes/index.svelte</strong>
+			</p>
+			<div class="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:space-x-8">
+				<a href="https://github.com/blazed-space/fire-svelte" target="_blank" class="px-8 py-3 text-lg font-semibold rounded bg-blue-600 hover:bg-blue-700 text-gray-50">
+					Repository
+				</a>
+			</div>
 		</div>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/index.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
-
-<style>
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
-	}
-
-	h1 {
-		width: 100%;
-	}
-
-	.welcome {
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
-	}
-</style>
+	</div>
+</div>

@@ -1,124 +1,60 @@
 <script>
-	import { page } from '$app/stores';
-	import logo from './svelte-logo.svg';
+    import Nav from "$lib/nav/Nav.svelte";
+    export let burgerOpened = false;
+    function toggleMenu(){
+        if(burgerOpened == true){
+            burgerOpened = false;
+        } else {
+            burgerOpened = true;
+        }
+    }
 </script>
 
-<header>
-	<div class="corner">
-		<a href="https://kit.svelte.dev">
-			<img src={logo} alt="SvelteKit" />
+<header class="p-4 bg-gray-100 text-gray-800">
+	<div class="container flex justify-between h-16 mx-auto">
+		<a rel="noopener noreferrer" title="Fire for Svelte" href="#" aria-label="Back to homepage" class="flex items-center p-2 hover:opacity-75">
+			<img src="https://blazed.sirv.com/logo/Beaker-Cobalt.png?w=50&h=50" alt="Logo" />
 		</a>
+		<div>
+			<!-- Desktop Menu -->
+			<ul class="items-stretch hidden space-x-3 md:flex mt-3">
+				<Nav />
+			</ul>
+		</div>
+		<!-- Mobile menu button -->
+		<div class="flex md:hidden">
+			<button on:click={toggleMenu} type="button" class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
+				{#if !burgerOpened}
+					<svg viewBox="0 0 24 24" class="w-9 h-9 fill-current">
+						<path fill-rule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"></path>
+					</svg>
+				{:else}
+					<svg class="w-10 h-10 fill-current" width="50" height="50" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.646 5.646a.5.5 0 000 .708l8 8a.5.5 0 00.708-.708l-8-8a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+						<path fill-rule="evenodd" d="M14.354 5.646a.5.5 0 010 .708l-8 8a.5.5 0 01-.708-.708l8-8a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+					</svg>
+				{/if}
+			</button>
+		</div>
 	</div>
-
-	<nav>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
-		</svg>
-		<ul>
-			<li class:active={$page.url.pathname === '/'}><a sveltekit:prefetch href="/">Home</a></li>
-			<li class:active={$page.url.pathname === '/about'}>
-				<a sveltekit:prefetch href="/about">About</a>
-			</li>
-			<li class:active={$page.url.pathname === '/todos'}>
-				<a sveltekit:prefetch href="/todos">Todos</a>
-			</li>
-		</ul>
-		<svg viewBox="0 0 2 3" aria-hidden="true">
-			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
-		</svg>
-	</nav>
-
-	<div class="corner">
-		<!-- TODO put something else here? github link? -->
+	<div>
+		{#if burgerOpened}
+			<!-- Mobile Menu -->
+			<ul class="relative mobile-menu">
+				<Nav />
+			</ul>
+		{/if}
 	</div>
 </header>
-
 <style>
-	header {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.corner {
-		width: 3em;
-		height: 3em;
-	}
-
-	.corner a {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-	}
-
-	.corner img {
-		width: 2em;
-		height: 2em;
-		object-fit: contain;
-	}
-
-	nav {
-		display: flex;
-		justify-content: center;
-		--background: rgba(255, 255, 255, 0.7);
-	}
-
-	svg {
-		width: 2em;
-		height: 3em;
-		display: block;
-	}
-
-	path {
-		fill: var(--background);
-	}
-
-	ul {
-		position: relative;
-		padding: 0;
-		margin: 0;
-		height: 3em;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		list-style: none;
-		background: var(--background);
-		background-size: contain;
-	}
-
-	li {
-		position: relative;
-		height: 100%;
-	}
-
-	li.active::before {
-		--size: 6px;
-		content: '';
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: 0;
-		left: calc(50% - var(--size));
-		border: var(--size) solid transparent;
-		border-top: var(--size) solid var(--accent-color);
-	}
-
-	nav a {
-		display: flex;
-		height: 100%;
-		align-items: center;
-		padding: 0 1em;
-		color: var(--heading-color);
-		font-weight: 700;
-		font-size: 0.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		text-decoration: none;
-		transition: color 0.2s linear;
-	}
-
-	a:hover {
-		color: var(--accent-color);
-	}
+	.mobile-menu{
+        display:none;
+    }
+    @media screen and (max-width: 768px){
+        .mobile-menu{
+            display:block;
+        }
+        .desktop-menu{
+            display:none;
+        }
+    }
 </style>

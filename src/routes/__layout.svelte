@@ -5,16 +5,19 @@
 
 <Header />
 
-<h1 class="text-3xl font-bold underline">
-	Hello world!
-</h1>
-
-<main>
+<main class="pt-10">
 	<slot />
 </main>
 
-<footer>
-	<p>visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit</p>
+<hr />
+
+<footer class="bg-white">
+	<p>
+		&bull; Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to learn SvelteKit.
+	</p>
+	<p>
+		&bull; Visit <a href="https://github.com/blazed-space/fire-svelte">Fire Svelte Repository</a> to learn Fire for Svelte.
+	</p>
 </footer>
 
 <style>

@@ -10,10 +10,47 @@ html, body{
     overflow-x: hidden;
 } 
 
+/* 
+	@ custom-scrollbar v1.0
+    DESC: Blazed Labs Custom Scrollbar.
+    (c) MIT Tyler Ruff; Blazed Labs LLC
+	@source = https://github.com/tyler-ruff/tyler-ruff/blob/main/Web-Gallery/CSS-Snippets/custom-scrollbar.css
+*/
+
 body::-webkit-scrollbar{width:10px}
 body::-webkit-scrollbar-track{background:#727a8a}
 body::-webkit-scrollbar-thumb{background-color:#afb4bd;border-radius:20px;border:1px solid #5b626e}
 body::-webkit-scrollbar-thumb:hover{background-color:#5b626e}
+
+/*
+	@ blink-stop v1.0
+    DESC: Prevent blinking cursor. Since the ::all selector is so slow,
+          we define all HTML elements that are cross-browser supported.
+    (c) MIT Tyler Ruff; Blazed Labs LLC
+	@source = https://github.com/tyler-ruff/tyler-ruff/blob/main/Web-Gallery/CSS-Snippets/blink-stop.css
+*/
+
+div, table, button, a, i, span, body, html,
+section, article, p, svg, h1, h2, h3, h4, h5, var,
+h6, hr, br, thead, tr, th, td, footer, main, header,
+aside, b, strong, blockquote, code, cite, col, colgroup,
+input[type=submit], input[type=radio], input[type=checkbox],
+input[type=color], input[type=date], input[type=file],
+input[type=hidden], input[type=image], input[type=reset],
+input[type=button], input[type=range], form, dl, dt, dd,
+iframe, label, legend, ul, li, img, caption, dfn, em, tfoot,
+fieldset, nav, ol, option, pre, select, sup, sub, tbody {
+    caret-color: rgba(0,0,0,0);
+}
+
+/*
+    Define cursor blinking color for text-based input types
+*/
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus,
+input[type=tel]:focus, input[type=text]:focus, input[type=number]:focus,
+input[type=search]:focus, input[type=url]:focus, textarea:focus {
+    caret-color: rgba(0,0,0,1);
+}
 
 :root {
 	font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
@@ -23,7 +60,7 @@ body::-webkit-scrollbar-thumb:hover{background-color:#5b626e}
 	--primary-color: #b9c6d2;
 	--secondary-color: #d0dde9;
 	--tertiary-color: #edf0f8;
-	--accent-color: #ff3e00;
+	--accent-color: #324aa8;
 	--heading-color: rgba(0, 0, 0, 0.7);
 	--text-color: #444444;
 	--background-without-opacity: rgba(255, 255, 255, 0.7);
@@ -57,6 +94,16 @@ body::before {
 		rgba(255, 255, 255, 0) 100%
 	);
 	opacity: 0.05;
+}
+
+::selection{
+	background: var(--accent-color);
+	color: var(--secondary-color);
+}
+
+::-moz-selection{
+	background: var(--accent-color);
+	color: var(--secondary-color);
 }
 
 #svelte {
